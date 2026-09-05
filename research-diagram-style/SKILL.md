@@ -1,6 +1,6 @@
 ---
 name: research-diagram-style
-description: Create professional Chinese scientific technical-route, system-architecture, and workflow diagrams with a black background, white modular cards, restrained color coding, orthogonal arrows, and orange dashed feedback loops. Use for research proposals, robotics system plans, academic framework figures, or PPT-ready architecture graphics. Do not use for decorative illustrations or photorealistic images.
+description: Create professional Chinese scientific technical-route, system-architecture, and workflow diagrams with a genuinely transparent background, white modular cards, restrained color coding, orthogonal arrows, and orange dashed feedback loops. Use for research proposals, robotics system plans, academic framework figures, or PPT-ready architecture graphics. Do not use for decorative illustrations or photorealistic images.
 ---
 
 # Research Diagram Style
@@ -18,12 +18,12 @@ Create a clear, high-density research diagram from the user's content while pres
 
 - Prefer editable SVG when Chinese text must be exact, the diagram will be revised, or the user requests publication/PPT quality. Export a PNG preview after visual inspection.
 - Use an available image-generation tool when the user explicitly wants generative output or rapid visual exploration. Supply the full style prompt from the reference guide and verify all visible text.
-- Preserve a transparent or pure black canvas according to the user's request. For a transparent result, keep real alpha rather than simulating transparency.
+- Always deliver a genuinely transparent canvas with real alpha. Do not add a full-canvas black, white, or checkerboard rectangle. If a solid-background preview is useful, create it only as a separate preview and keep the SVG and primary PNG transparent.
 - Default to vertical 4:5 for a technical route and landscape 16:9 for a system architecture unless the user specifies otherwise.
 
 ## Required visual grammar
 
-- Use a pure black or transparent background.
+- Use a genuinely transparent background. Keep dark colors confined to module shadows, emphasis bars, and other intentional diagram elements.
 - Build the diagram from white rounded rectangular modules with thin semantic color outlines.
 - Add a crisp dark-navy hard shadow offset downward and slightly right; never blur it.
 - Use pale blue, mint, lavender, and pale orange headers or category bands.
@@ -42,5 +42,4 @@ Create a clear, high-density research diagram from the user's content while pres
 
 ## Quality check
 
-Inspect the final render at full size. Correct any clipped text, broken Chinese glyphs, uneven alignment, inconsistent radii, missing arrowheads, line crossings, insufficient contrast, or cropped feedback loops before delivery.
-
+Inspect the final render at full size. Correct any clipped text, broken Chinese glyphs, uneven alignment, inconsistent radii, missing arrowheads, line crossings, insufficient contrast, or cropped feedback loops before delivery. Verify that the primary PNG is RGBA with unused canvas pixels at alpha 0 and that the SVG has no opaque full-canvas background shape. Check readability over both light and dark preview surfaces.

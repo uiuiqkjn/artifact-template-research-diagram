@@ -6,7 +6,7 @@ This guide defines a reusable visual system for dense scientific technical-route
 
 | Role | Suggested color |
 |---|---|
-| Canvas | `#000000` or transparent |
+| Canvas | Transparent (`alpha: 0`) |
 | Card surface | `#FFFFFF` |
 | Primary text | `#172338` |
 | Secondary text | `#5D6A7D` |
@@ -48,6 +48,7 @@ Use a modern Chinese sans-serif family such as PingFang SC, Noto Sans CJK SC, So
 - Primary text is dark navy, never pure black on white. Supporting text uses muted blue-gray.
 - Center text inside compact modules. Left-align longer explanatory content with consistent insets.
 - Do not stretch, outline, bevel, glow, or shadow text.
+- Put page titles or labels that sit outside major cards on an intentional white or dark solid panel so they remain readable when the transparent diagram is placed over either a light or dark surface.
 
 ## 4. Layout families
 
@@ -100,6 +101,7 @@ Use for parallel perception/decision paths or model/system layers.
 - Use one dominant flow direction. Secondary loops must be visually subordinate.
 - Keep 70–85% of the usable area occupied; preserve clear outer margins.
 - Prefer nested grouping over long unstructured text lists.
+- Keep the page canvas genuinely transparent. Do not use a full-canvas color fill or a checkerboard pattern to imitate transparency.
 - Do not use icons, photographs, people, character illustrations, decorative grids, gradients, glass effects, soft shadows, glows, textures, or ornamental backgrounds.
 - Do not crop cards, connector labels, arrowheads, or outer feedback loops.
 
@@ -110,7 +112,7 @@ Replace every bracketed field. Keep the style and negative constraints intact.
 ```text
 Create a professional scientific technical-route and system-architecture diagram for [use case].
 
-Canvas: [vertical 4:5 / landscape 16:9 / exact dimensions], pure black or genuinely transparent background.
+Canvas: [vertical 4:5 / landscape 16:9 / exact dimensions], genuinely transparent background with real alpha; no full-canvas color fill or checkerboard simulation.
 Title: “[exact title]”.
 Topology: [vertical pipeline / split-label process / dual-column architecture].
 Modules and exact text:
@@ -126,12 +128,11 @@ Connections: solid blue orthogonal arrows for primary data and control flow; ora
 
 Layout: rigorous grid alignment, uniform gaps, generous outer margins, high information density with sufficient whitespace, exact Chinese wording, all elements fully inside the canvas.
 
-Avoid: photos, people, robots as illustrations, icons, decorative illustrations, gradients, glow, soft shadows, glassmorphism, 3D, textures, decorative background, watermark, logos, curved arrows, overlapping labels, unreadably small text, garbled Chinese, or cropped feedback loops.
+Avoid: opaque full-canvas backplates, fake checkerboard transparency, photos, people, robots as illustrations, icons, decorative illustrations, gradients, glow, soft shadows, glassmorphism, 3D, textures, decorative background, watermark, logos, curved arrows, overlapping labels, unreadably small text, garbled Chinese, or cropped feedback loops.
 ```
 
 ## 8. SVG implementation notes
 
-For precise editable output, use one SVG `viewBox` and group each major card. Draw the hard shadow as an offset duplicate path instead of an SVG blur filter. Draw arrowheads as explicit polygons if the renderer does not preserve marker definitions. Embed a fallback font stack and keep all text as text unless the user requests outlined paths.
+For precise editable output, use one SVG `viewBox`, omit any opaque full-canvas rectangle, and group each major card. Draw the hard shadow as an offset duplicate path instead of an SVG blur filter. Draw arrowheads as explicit polygons if the renderer does not preserve marker definitions. Embed a fallback font stack and keep all text as text unless the user requests outlined paths.
 
-Export at 1200×1500 for 4:5 or 1920×1080 for 16:9. Inspect the raster export because some converters omit SVG markers or crop content outside the viewBox.
-
+Export at 1200×1500 for 4:5 or 1920×1080 for 16:9. Inspect the raster export because some converters omit SVG markers, flatten transparency, or crop content outside the viewBox. Verify an RGBA output with alpha 0 in unused canvas pixels, including all four corners when the layout preserves the required outer margin.

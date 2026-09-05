@@ -1,6 +1,5 @@
 interface:
   display_name: "Research Diagram Style"
-  short_description: "生成黑底扁平矢量科研技术路线与系统架构流程图"
+  short_description: "生成透明背景的扁平矢量科研技术路线与系统架构流程图"
   brand_color: "#087FBD"
   default_prompt: "Use $research-diagram-style to create a professional scientific system architecture diagram from my content."
-
